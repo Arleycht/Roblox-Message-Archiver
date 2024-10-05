@@ -8,6 +8,13 @@ from selenium.webdriver.common.by import By
 from selenium import webdriver
 
 
+screenshot_delay = 2
+page_delay = 2
+
+json_format_url = "https://privatemessages.roblox.com/v1/messages?messageTab={}&pageNumber={}&pageSize=20"
+page_format_url = "https://www.roblox.com/my/messages/#!/{}?page={}&messageIdx={}"
+
+
 def download(url: str, cookies: dict={}):
 	try:
 		response = requests.get(url, cookies=cookies)
@@ -21,12 +28,6 @@ def download(url: str, cookies: dict={}):
 
 
 def main():
-	screenshot_delay = 2
-	page_delay = 2
-	
-	json_format_url = "https://privatemessages.roblox.com/v1/messages?messageTab={}&pageNumber={}&pageSize=20"
-	page_format_url = "https://www.roblox.com/my/messages/#!/{}?page={}&messageIdx={}"
-	
 	# Create directories
 	Path("output/").mkdir(exist_ok=True)
 	Path("output/images").mkdir(exist_ok=True)
