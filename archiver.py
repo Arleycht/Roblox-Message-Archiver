@@ -39,7 +39,6 @@ def main():
 		roblosecurity = f.read()
 	
 	requests_cookies = {".ROBLOSECURITY": roblosecurity}
-	driver_cookie = {"name": ".ROBLOSECURITY", "value": roblosecurity, "domain": "roblox.com"}
 	
 	# Download ublock for faster loading of web pages
 	if not Path("addons/ublock.xpi").exists():
@@ -57,7 +56,7 @@ def main():
 	
 	# Initialize website with cookies
 	driver.get("https://www.roblox.com/")
-	driver.add_cookie(driver_cookie)
+	driver.add_cookie({"name": ".ROBLOSECURITY", "value": roblosecurity, "domain": "roblox.com"})
 	driver.get("https://www.roblox.com/my/messages/#!/inbox")
 	
 	for tab_name in ["inbox", "sent", "archive"]:
